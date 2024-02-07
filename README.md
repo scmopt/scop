@@ -8,7 +8,7 @@
 > `https://github.com/scmopt/scop.git`
 
 2. Move to scoptrial directry (if you run scop from Jupyter, you need not to move to scop directory):
-> `cd scoptrial`
+> `cd scop/scoptrial`
 
 3. Change mode of execution file
 
@@ -18,22 +18,22 @@
  - for Mac intel 
  > `!chmod +x scop-mac`
 
- - for Mac sillicon (Mx series) 
+ - for Mac sillicone (Mx series) 
  > `!chmod +x scop-m1`  
 
-4. Import package and write a code:> `from scoptrial.scop import *`
+4. Import package and write a code:> `from scop import *`
 5. (Option) Install other packages if necessarily: 
 
 > `!pip install plotly pandas numpy metplotlib`
 
 ## How to use
 
-See https://scmopt.github.io/scoptrial/  and  https://www.logopt.com/scop2/ 
+See https://scmopt.github.io/manual/14scop.html  and  https://www.logopt.com/scop2/ 
 
-Here is an example. 
+Here is an example (after moving scop/scoptrial directory). 
 
 ```python
-from scoptrial.scop import *
+from scop import *
 ```
 
 ```python
