@@ -270,23 +270,21 @@ class Model(object):
             print("  TimeLimit =%s second \n"%time)
             print("  RandomSeed= %s \n"%seed)
             print("  OutputFlag= %s \n"%LOG)
-        import subprocess
-#         if platform.system() == "Windows":
-#             cmd = "scop -time "+str(time)+" -seed "+str(seed) #solver call for win
-#         elif platform.system()== "Darwin":
-#             cmd = "./scop -time "+str(time)+" -seed "+str(seed) #solver call for mac
-#         elif platform.system() == "Linux":
-#             cmd = "./scop-linux -time "+str(time)+" -seed "+str(seed) #solver call for linux
 
-# トライアル版の場合は以下を生かす
+        import subprocess
+        
+        script = "./scop"
+        
         if platform.system() == "Windows":
             cmd = "scop-win -time "+str(time)+" -seed "+str(seed) #solver call for win
         elif platform.system()== "Darwin":
-            cmd = "./scop-mac -time "+str(time)+" -seed "+str(seed) #solver call for mac
+            if platform.mac_ver()[2]=="arm64": #M1
+                cmd = f"{script}-m1 -time "+str(time)+" -seed "+str(seed)
+            else:
+                cmd = f"{script}-mac -time "+str(time)+" -seed "+str(seed) #solver call for mac
         elif platform.system() == "Linux":
-            cmd = "./scop-linux -time "+str(time)+" -seed "+str(seed) #solver call for linux
-
-
+            cmd = f"{script}-linux -time "+str(time)+" -seed "+str(seed) #solver call for linux
+            
         if self.Params.Initial:
             cmd += " -initsolfile scop_best_data.txt"
 
@@ -296,14 +294,17 @@ class Model(object):
             else:
                 pipe = subprocess.Popen(cmd, stdout=subprocess.PIPE, stdin=subprocess.PIPE, shell=True)
             print("\n ================ Now solving the problem ================ \n")
-            #pipe = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE,stdin=subprocess.PIPE)
+            
+            out, err = pipe.communicate(f.encode()) #get the result
+            if out ==b"":
+                raise OSError
+                
         except OSError:
-            print("error: could not execute command '%s'" % cmd)
+            print("error: could not execute command")
             print("please check that the solver is in the path")
             self.Status = 7  #execution falied
             return None, None
 
-        out, err = pipe.communicate(f.encode()) #get the result
         if err!=None:
             if int(sys.version_info[0])>=3:
                 err = str(err, encoding='utf-8')

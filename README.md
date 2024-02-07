@@ -5,27 +5,30 @@
 ## How to Install to Jupyter Notebook (Labo) and/or Google Colaboratory
 
 1. Clone from github:
-> `!git clone https://github.com/mikiokubo/scoptrial.git`
-2. Move to scoptrial directry:
+> `https://github.com/scmopt/scop.git`
+
+2. Move to scoptrial directry (if you run scop from Jupyter, you need not to move to scop directory):
 > `cd scoptrial`
 
 3. Change mode of execution file
 
- - for linux (Google Colab.)  
+ - for linux (e.g., Google Colab.)  
  > `!chmod +x scop-linux`   
 
- - for Mac 
- > `!chmod +x scop-mac`  
+ - for Mac intel 
+ > `!chmod +x scop-mac`
+
+ - for Mac sillicon (Mx series) 
+ > `!chmod +x scop-m1`  
 
 4. Import package and write a code:> `from scoptrial.scop import *`
 5. (Option) Install other packages if necessarily: 
 
 > `!pip install plotly pandas numpy metplotlib`
 
-
 ## How to use
 
-See https://mikiokubo.github.io/scoptrial/  and  https://www.logopt.com/scop2/ 
+See https://scmopt.github.io/scoptrial/  and  https://www.logopt.com/scop2/ 
 
 Here is an example. 
 
