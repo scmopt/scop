@@ -1,6 +1,13 @@
-variable A in { 0,1,2 } 
- variable B in { 0,1,2 } 
- variable C in { 0,1,2 } 
+variable c0 in { 0,1,2,3 } 
+ variable c1 in { 0,1,2,3 } 
+ variable c2 in { 0,1,2,3 } 
+ variable c3 in { 0,1,2,3 } 
+ variable c4 in { 0,1,2,3 } 
+ variable c5 in { 0,1,2,3 } 
  target = 0 
- AD: weight= inf type=alldiff  A C B ; 
- linear_constraint: weight= 1 type=linear 15(A,0) 20(A,1) 30(A,2) 7(B,0) 15(B,1) 12(B,2) 25(C,0) 10(C,1) 13(C,2) <=0
+ con_2_4: weight= inf type=alldiff  c4 c2 ; 
+ con_2_3: weight= inf type=alldiff  c2 c3 ; 
+ con_0_2: weight= inf type=alldiff  c2 c0 ; 
+ con_2_5: weight= inf type=alldiff  c5 c2 ; 
+ con_1_3: weight= inf type=alldiff  c1 c3 ; 
+ con_3_5: weight= inf type=alldiff  c5 c3 ; 

@@ -1,0 +1,13 @@
+variable c0 in { 0,1,2 } 
+ variable c1 in { 0,1,2 } 
+ variable c2 in { 0,1,2 } 
+ variable c3 in { 0,1,2 } 
+ variable c4 in { 0,1,2 } 
+ variable c5 in { 0,1,2 } 
+ target = 0 
+ con_2_4: weight= inf type=alldiff  c2 c4 ; 
+ con_2_3: weight= inf type=alldiff  c2 c3 ; 
+ con_0_2: weight= inf type=alldiff  c2 c0 ; 
+ con_2_5: weight= inf type=alldiff  c2 c5 ; 
+ con_1_3: weight= inf type=alldiff  c3 c1 ; 
+ con_3_5: weight= inf type=alldiff  c3 c5 ; 
